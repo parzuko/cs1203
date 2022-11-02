@@ -23,8 +23,16 @@ void print_array(int array[], int length) {
 }
 
 int main(void) {
-    int unsorted_nums[] = {31, 1, 491, 241, 83, 17};
-    int length = sizeof(unsorted_nums) / sizeof(unsorted_nums[0]);
+    int length;
+    printf("Selection Sort Algorithm\n");
+    printf("Enter the number of elements in your array: ");
+    scanf("%d", &length);
+
+    int unsorted_nums[length];
+    for (int i = 0; i < length; i++) {
+        printf("Enter element %d: ", i + 1);
+        scanf("%d", &unsorted_nums[i]);
+    }
 
     printf("The unsorted array is: ");
     print_array(unsorted_nums, length);
