@@ -38,7 +38,7 @@ void print_array(int array[], int length) {
 
 int main(void) {
     int length;
-    printf("Selection Sort Algorithm\n");
+    printf("Quick Sort Algorithm\n");
     printf("Enter the number of elements in your array: ");
     scanf("%d", &length);
 
