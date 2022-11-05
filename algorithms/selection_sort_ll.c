@@ -39,6 +39,9 @@ void append_node(struct LinkedListNode **head, int value) {
     current->next = new_node;
 }
 
+/*
+* Selection Sort Algorithm on a Linked List
+*/
 void selection_sort(struct LinkedListNode **head) {
     struct LinkedListNode *current = *head;
     while (current != NULL) {
