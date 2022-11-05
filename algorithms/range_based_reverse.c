@@ -85,7 +85,7 @@ void print_linked_list(struct LinkedListNode *head) {
 
 int main(void) {
     int length;
-    printf("Reverse Linked List Algorithm\n");
+    printf("Range Based Reverse Linked List Algorithm\n");
     printf("Enter the number of elements in your list: ");
     scanf("%d", &length);
 
