@@ -70,60 +70,60 @@ struct AVLTreeNode *left_rotate(struct AVLTreeNode *node) {
     return right_subtree;
 }
 
-struct AVLTreeNode *insert_node(struct AVLTreeNode *node, int val) {
-    if (node == NULL) {
+struct AVLTreeNode *insert_node(struct AVLTreeNode *root, int val) {
+    if (root == NULL) {
         return create_node(val);
     }
 
-    if (val < node->value) {
-        node->left = insert_node(node->left, val);
-    } else if (val > node->value) {
-        node->right = insert_node(node->right, val);
+    if (val < root->value) {
+        root->left = insert_node(root->left, val);
+    } else if (val > root->value) {
+        root->right = insert_node(root->right, val);
     } else {
-        return node;
+        return root;
     }
 
-    node->height = 1 + max(fetch_height(node->left), fetch_height(node->right));
+    root->height = 1 + max(fetch_height(root->left), fetch_height(root->right));
 
-    int height_diff = get_tree_height_diff(node);
+    int height_diff = get_tree_height_diff(root);
 
     // left left case
-    if (height_diff > 1 && val < node->left->value) {
-        return right_rotate(node);
+    if (height_diff > 1 && val < root->left->value) {
+        return right_rotate(root);
     }
 
     // right right case
-    if (height_diff < -1 && val > node->right->value) {
-        return left_rotate(node);
+    if (height_diff < -1 && val > root->right->value) {
+        return left_rotate(root);
     }
 
     // left right case
-    if (height_diff > 1 && val > node->left->value) {
-        node->left = left_rotate(node->left);
-        return right_rotate(node);
+    if (height_diff > 1 && val > root->left->value) {
+        root->left = left_rotate(root->left);
+        return right_rotate(root);
     }
 
     // right left case
-    if (height_diff < -1 && val < node->right->value) {
-        node->right = right_rotate(node->right);
-        return left_rotate(node);
+    if (height_diff < -1 && val < root->right->value) {
+        root->right = right_rotate(root->right);
+        return left_rotate(root);
     }
 
-    return node;
+    return root;
 }
 
-void print_tree(struct AVLTreeNode *node) {
-    if (node == NULL) {
+void print_tree(struct AVLTreeNode *root) {
+    if (root == NULL) {
         return;
     }
-    printf("%d ", node->value);
-    print_tree(node->left);
-    print_tree(node->right);
+    printf("%d ", root->value);
+    print_tree(root->left);
+    print_tree(root->right);
 }
 
 int main (void) {
     struct AVLTreeNode *root = NULL;
-    
+
     int k = -1;
     for (int i = 0; i < 100; i = i + 8) {
         root = insert_node(root, i * k);
