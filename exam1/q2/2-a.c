@@ -42,26 +42,32 @@ struct ReversalNode *arrayToLLWithNext2(int *array, int size) {
     return head;
 }
 
-void printLL(struct ReversalNode *head) {
+void printLinkedList(struct ReversalNode *head) {
     struct ReversalNode *current = head;
+    printf("Printing the linked list \n");
     while (current != NULL) {
-        printf("%d ", current->value);
-
-        if (current->next2 != NULL) {
-            printf("Next2 is -> (%d)\n", current->next2->value);
-        } else {
-            printf("Next2 is -> (NULL)\n");
-        }
-
+        printf(" %d ->", current->value);
         current = current->next;
     }
-    printf("\n");
+    printf(" Null\n");
+    
+    printf("\nPrinting the Next 2s \n");
+    current = head;
+    while (current != NULL) {
+        if (current->next2 != NULL) {
+            printf(" %d ->", current->next2->value);
+        } else {
+            printf(" NULL ->");
+        }
+        current = current->next;
+    }
+    printf(" Null\n");
 }
 
 
 int main (void) {
     int array[] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
     struct ReversalNode *head = arrayToLLWithNext2(array, 9);
-    printLL(head);
+    printLinkedList(head);
     return 0;
 }

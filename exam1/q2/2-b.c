@@ -77,7 +77,7 @@ struct ReversalNode *reverseLLWith2Next(struct ReversalNode *head) {
     return prev;
 }
 
-void printLL(struct ReversalNode *head) {
+void printLinkedList(struct ReversalNode *head) {
     struct ReversalNode *current = head;
     printf("Printing the linked list \n");
     while (current != NULL) {
@@ -85,7 +85,7 @@ void printLL(struct ReversalNode *head) {
         current = current->next;
     }
     printf(" Null\n");
-    printf("Printing the Next 2s \n");
+    printf("\nPrinting the Next 2s \n");
 
     current = head;
     while (current != NULL) {
@@ -96,18 +96,17 @@ void printLL(struct ReversalNode *head) {
         }
         current = current->next;
     }
-    printf(" Null\n");
+    printf(" Null\n\n");
 }
 
 
 int main (void) {
     int array[] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
     struct ReversalNode *head = arrayToLLWithNext2(array, 9);
-    printLL(head);
+    printLinkedList(head);
 
-    printf("\nReversing the linked list \n");
 
     struct ReversalNode *reversed = reverseLLWith2Next(head);
-    printLL(reversed);
+    printLinkedList(reversed);
     return 0;
 }
